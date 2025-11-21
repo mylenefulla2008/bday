@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Lovelove</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        background: #ffe6f2;
+        text-align: center;
+    }
+
+    h1 {
+        margin-top: 30px;
+        color: #ff4da6;
+        font-size: 2.5rem;
+    }
+
+    /* Envelope */
+    .envelope {
+        width: 170px;
+        height: 120px;
+        background: #fff;
+        border: 2px solid #ff4da6;
+        margin: 40px auto;
+        position: relative;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .envelope:hover {
+        transform: scale(1.05);
+    }
+
+    .flap {
+        width: 0;
+        height: 0;
+        border-left: 85px solid transparent;
+        border-right: 85px solid transparent;
+        border-bottom: 60px solid #ffb3d9;
+        position: absolute;
+        top: -1px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border-radius: 5px;
+        transition: 0.4s;
+    }
+
+    .open .flap {
+        transform: rotateX(180deg);
+    }
+
+    /* Hidden message */
+    #message-box {
+        display: none;
+        padding: 20px;
+        margin-top: 20px;
+        font-size: 1.1rem;
+        color: #ff1a8c;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.8;
+    }
+
+    #kiss-btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+        border: none;
+        background: #ff4da6;
+        color: white;
+        border-radius: 20px;
+        margin-top: 20px;
+        cursor: pointer;
+        display: none;
+    }
+
+    #kiss-btn:hover {
+        background: #ff1a8c;
+    }
+
+    /* Surprise photo */
+    #surprise-photo {
+        display: none;
+        width: 85%;
+        max-width: 450px;
+        margin: 30px auto;
+        border-radius: 20px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Floating Kisses */
+    .kiss {
+        position: fixed;
+        bottom: 20px;
+        font-size: 2rem;
+        animation: floatUp 3s linear forwards;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(-150px); opacity: 0; }
+    }
+</style>
+</head>
+
+<body>
+
+<h1>🎂 Happy Birthday, Lovelove 💗</h1>
+
+<!-- Envelope -->
+<div class="envelope" id="envelope">
+    <div class="flap"></div>
+</div>
+
+<!-- Hidden Message -->
+<div id="message-box">
+    <p><strong>Happy Birthday, my Lovelove.</strong></p>
+
+    <p>Today isn’t just another day — it’s the day the world became softer, brighter, and kinder because <em>you</em> were born. I hope you feel that, even just a little, because you deserve to feel special not only today, but every single day of your life.</p>
+
+    <p>I know this year hasn’t been easy. There were days when school drained you, when you felt tired, unseen, or overwhelmed. But even through all of that, you continued to push forward with so much strength, patience, and kindness. And I hope you know — that’s something I admire so much about you.</p>
+
+    <p>You may not always see it, but you’re doing amazing. You’re growing, learning, surviving, and shining in ways you don’t even realize. You’re enough… more than enough. Your efforts, your heart, your presence — they all matter so much.</p>
+
+    <p>Thank you for being you.  
+    For smiling even when you're tired.  
+    For being soft-hearted even when the world gets heavy.  
+    For trying, even on days when you barely have the strength.  
+    You inspire me more than you know.</p>
+
+    <p>On your special day, I wish you peace in your heart, calm in your mind, and happiness that stays. I hope you feel how loved you are — not just by me, but by everyone whose life you’ve touched. Because truly… you are loved more than you realize.</p>
+
+    <p>I’m proud of you.  
+    I’m grateful for you.  
+    And I’m here — always cheering for you, always choosing you, always rooting for your happiness.</p>
+
+    <p><strong>Happy Birthday, my Lovelove.</strong><br>
+    You deserve the softest days, the warmest hugs, and the sweetest love this world can give. 🌸💗</p>
+</div>
+
+<button id="kiss-btn">Send Kisses 😘</button>
+
+<!-- Surprise Photo -->
+<img id="surprise-photo" src="photo.jpg">
+
+<script>
+    const envelope = document.getElementById("envelope");
+    const messageBox = document.getElementById("message-box");
+    const kissBtn = document.getElementById("kiss-btn");
+    const surprisePhoto = document.getElementById("surprise-photo");
+
+    envelope.onclick = () => {
+        envelope.classList.add("open");
+        messageBox.style.display = "block";
+        kissBtn.style.display = "inline-block";
+    };
+
+    kissBtn.onclick = () => {
+        for (let i = 0; i < 20; i++) {
+            let kiss = document.createElement("div");
+            kiss.classList.add("kiss");
+            kiss.textContent = "😘";
+            kiss.style.left = Math.random() * 100 + "vw";
+            kiss.style.fontSize = (Math.random() * 20 + 20) + "px";
+            document.body.appendChild(kiss);
+
+            setTimeout(() => kiss.remove(), 3000);
+        }
+
+        // Show picture after kisses
+        setTimeout(() => {
+            surprisePhoto.style.display = "block";
+        }, 1500);
+    };
+</script>
+
+</body>
+</html>
